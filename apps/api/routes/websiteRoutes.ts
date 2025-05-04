@@ -2,9 +2,7 @@ import express from "express";
 
 const router = express.Router();
 
-router.post("/", (req, res) => {
-  // Your implementation here
-});
+router.post("/", (req, res) => {});
 
 router.get("/status", (req, res) => {
   // Your implementation here

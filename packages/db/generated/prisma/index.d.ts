@@ -18,6 +18,38 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
+/**
+ * Model Website
+ * 
+ */
+export type Website = $Result.DefaultSelection<Prisma.$WebsitePayload>
+/**
+ * Model validator
+ * 
+ */
+export type validator = $Result.DefaultSelection<Prisma.$validatorPayload>
+/**
+ * Model WebsiteTick
+ * 
+ */
+export type WebsiteTick = $Result.DefaultSelection<Prisma.$WebsiteTickPayload>
+
+/**
+ * Enums
+ */
+export namespace $Enums {
+  export const WebsiteStatus: {
+  GOOD: 'GOOD',
+  BAD: 'BAD'
+};
+
+export type WebsiteStatus = (typeof WebsiteStatus)[keyof typeof WebsiteStatus]
+
+}
+
+export type WebsiteStatus = $Enums.WebsiteStatus
+
+export const WebsiteStatus: typeof $Enums.WebsiteStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +185,36 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.website`: Exposes CRUD operations for the **Website** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Websites
+    * const websites = await prisma.website.findMany()
+    * ```
+    */
+  get website(): Prisma.WebsiteDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.validator`: Exposes CRUD operations for the **validator** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Validators
+    * const validators = await prisma.validator.findMany()
+    * ```
+    */
+  get validator(): Prisma.validatorDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.websiteTick`: Exposes CRUD operations for the **WebsiteTick** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more WebsiteTicks
+    * const websiteTicks = await prisma.websiteTick.findMany()
+    * ```
+    */
+  get websiteTick(): Prisma.WebsiteTickDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +655,10 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User'
+    User: 'User',
+    Website: 'Website',
+    validator: 'validator',
+    WebsiteTick: 'WebsiteTick'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +677,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "user" | "website" | "validator" | "websiteTick"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +752,228 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
+          }
+        }
+      }
+      Website: {
+        payload: Prisma.$WebsitePayload<ExtArgs>
+        fields: Prisma.WebsiteFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WebsiteFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WebsiteFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          findFirst: {
+            args: Prisma.WebsiteFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WebsiteFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          findMany: {
+            args: Prisma.WebsiteFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>[]
+          }
+          create: {
+            args: Prisma.WebsiteCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          createMany: {
+            args: Prisma.WebsiteCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WebsiteCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>[]
+          }
+          delete: {
+            args: Prisma.WebsiteDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          update: {
+            args: Prisma.WebsiteUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          deleteMany: {
+            args: Prisma.WebsiteDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WebsiteUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WebsiteUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>[]
+          }
+          upsert: {
+            args: Prisma.WebsiteUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsitePayload>
+          }
+          aggregate: {
+            args: Prisma.WebsiteAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWebsite>
+          }
+          groupBy: {
+            args: Prisma.WebsiteGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WebsiteGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WebsiteCountArgs<ExtArgs>
+            result: $Utils.Optional<WebsiteCountAggregateOutputType> | number
+          }
+        }
+      }
+      validator: {
+        payload: Prisma.$validatorPayload<ExtArgs>
+        fields: Prisma.validatorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.validatorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.validatorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          findFirst: {
+            args: Prisma.validatorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.validatorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          findMany: {
+            args: Prisma.validatorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>[]
+          }
+          create: {
+            args: Prisma.validatorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          createMany: {
+            args: Prisma.validatorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.validatorCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>[]
+          }
+          delete: {
+            args: Prisma.validatorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          update: {
+            args: Prisma.validatorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          deleteMany: {
+            args: Prisma.validatorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.validatorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.validatorUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>[]
+          }
+          upsert: {
+            args: Prisma.validatorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$validatorPayload>
+          }
+          aggregate: {
+            args: Prisma.ValidatorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateValidator>
+          }
+          groupBy: {
+            args: Prisma.validatorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ValidatorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.validatorCountArgs<ExtArgs>
+            result: $Utils.Optional<ValidatorCountAggregateOutputType> | number
+          }
+        }
+      }
+      WebsiteTick: {
+        payload: Prisma.$WebsiteTickPayload<ExtArgs>
+        fields: Prisma.WebsiteTickFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WebsiteTickFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WebsiteTickFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          findFirst: {
+            args: Prisma.WebsiteTickFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WebsiteTickFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          findMany: {
+            args: Prisma.WebsiteTickFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>[]
+          }
+          create: {
+            args: Prisma.WebsiteTickCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          createMany: {
+            args: Prisma.WebsiteTickCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WebsiteTickCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>[]
+          }
+          delete: {
+            args: Prisma.WebsiteTickDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          update: {
+            args: Prisma.WebsiteTickUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          deleteMany: {
+            args: Prisma.WebsiteTickDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WebsiteTickUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WebsiteTickUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>[]
+          }
+          upsert: {
+            args: Prisma.WebsiteTickUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WebsiteTickPayload>
+          }
+          aggregate: {
+            args: Prisma.WebsiteTickAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWebsiteTick>
+          }
+          groupBy: {
+            args: Prisma.WebsiteTickGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WebsiteTickGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WebsiteTickCountArgs<ExtArgs>
+            result: $Utils.Optional<WebsiteTickCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +1062,9 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     user?: UserOmit
+    website?: WebsiteOmit
+    validator?: validatorOmit
+    websiteTick?: WebsiteTickOmit
   }
 
   /* Types for Logging */
@@ -864,6 +1154,67 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type WebsiteCountOutputType
+   */
+
+  export type WebsiteCountOutputType = {
+    ticks: number
+  }
+
+  export type WebsiteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticks?: boolean | WebsiteCountOutputTypeCountTicksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * WebsiteCountOutputType without action
+   */
+  export type WebsiteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteCountOutputType
+     */
+    select?: WebsiteCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * WebsiteCountOutputType without action
+   */
+  export type WebsiteCountOutputTypeCountTicksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WebsiteTickWhereInput
+  }
+
+
+  /**
+   * Count Type ValidatorCountOutputType
+   */
+
+  export type ValidatorCountOutputType = {
+    ticks: number
+  }
+
+  export type ValidatorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticks?: boolean | ValidatorCountOutputTypeCountTicksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ValidatorCountOutputType without action
+   */
+  export type ValidatorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ValidatorCountOutputType
+     */
+    select?: ValidatorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ValidatorCountOutputType without action
+   */
+  export type ValidatorCountOutputTypeCountTicksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WebsiteTickWhereInput
+  }
+
 
   /**
    * Models
@@ -883,7 +1234,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
-    password: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -892,7 +1242,6 @@ export namespace Prisma {
     id: string | null
     name: string | null
     email: string | null
-    password: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -901,7 +1250,6 @@ export namespace Prisma {
     id: number
     name: number
     email: number
-    password: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -912,7 +1260,6 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -921,7 +1268,6 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -930,7 +1276,6 @@ export namespace Prisma {
     id?: true
     name?: true
     email?: true
-    password?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -1012,7 +1357,6 @@ export namespace Prisma {
     id: string
     name: string | null
     email: string | null
-    password: string | null
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
@@ -1038,7 +1382,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1047,7 +1390,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1056,7 +1398,6 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
@@ -1065,12 +1406,11 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     email?: boolean
-    password?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "password" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
@@ -1079,7 +1419,6 @@ export namespace Prisma {
       id: string
       name: string | null
       email: string | null
-      password: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["user"]>
@@ -1508,7 +1847,6 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
-    readonly password: FieldRef<"User", 'String'>
     readonly createdAt: FieldRef<"User", 'DateTime'>
     readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
@@ -1878,6 +2216,3220 @@ export namespace Prisma {
 
 
   /**
+   * Model Website
+   */
+
+  export type AggregateWebsite = {
+    _count: WebsiteCountAggregateOutputType | null
+    _min: WebsiteMinAggregateOutputType | null
+    _max: WebsiteMaxAggregateOutputType | null
+  }
+
+  export type WebsiteMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    userId: string | null
+  }
+
+  export type WebsiteMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    userId: string | null
+  }
+
+  export type WebsiteCountAggregateOutputType = {
+    id: number
+    url: number
+    userId: number
+    _all: number
+  }
+
+
+  export type WebsiteMinAggregateInputType = {
+    id?: true
+    url?: true
+    userId?: true
+  }
+
+  export type WebsiteMaxAggregateInputType = {
+    id?: true
+    url?: true
+    userId?: true
+  }
+
+  export type WebsiteCountAggregateInputType = {
+    id?: true
+    url?: true
+    userId?: true
+    _all?: true
+  }
+
+  export type WebsiteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Website to aggregate.
+     */
+    where?: WebsiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Websites to fetch.
+     */
+    orderBy?: WebsiteOrderByWithRelationInput | WebsiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WebsiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Websites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Websites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Websites
+    **/
+    _count?: true | WebsiteCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WebsiteMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WebsiteMaxAggregateInputType
+  }
+
+  export type GetWebsiteAggregateType<T extends WebsiteAggregateArgs> = {
+        [P in keyof T & keyof AggregateWebsite]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWebsite[P]>
+      : GetScalarType<T[P], AggregateWebsite[P]>
+  }
+
+
+
+
+  export type WebsiteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WebsiteWhereInput
+    orderBy?: WebsiteOrderByWithAggregationInput | WebsiteOrderByWithAggregationInput[]
+    by: WebsiteScalarFieldEnum[] | WebsiteScalarFieldEnum
+    having?: WebsiteScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WebsiteCountAggregateInputType | true
+    _min?: WebsiteMinAggregateInputType
+    _max?: WebsiteMaxAggregateInputType
+  }
+
+  export type WebsiteGroupByOutputType = {
+    id: string
+    url: string
+    userId: string
+    _count: WebsiteCountAggregateOutputType | null
+    _min: WebsiteMinAggregateOutputType | null
+    _max: WebsiteMaxAggregateOutputType | null
+  }
+
+  type GetWebsiteGroupByPayload<T extends WebsiteGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WebsiteGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WebsiteGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WebsiteGroupByOutputType[P]>
+            : GetScalarType<T[P], WebsiteGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WebsiteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    userId?: boolean
+    ticks?: boolean | Website$ticksArgs<ExtArgs>
+    _count?: boolean | WebsiteCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["website"]>
+
+  export type WebsiteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["website"]>
+
+  export type WebsiteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    userId?: boolean
+  }, ExtArgs["result"]["website"]>
+
+  export type WebsiteSelectScalar = {
+    id?: boolean
+    url?: boolean
+    userId?: boolean
+  }
+
+  export type WebsiteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "userId", ExtArgs["result"]["website"]>
+  export type WebsiteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticks?: boolean | Website$ticksArgs<ExtArgs>
+    _count?: boolean | WebsiteCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type WebsiteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type WebsiteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $WebsitePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Website"
+    objects: {
+      ticks: Prisma.$WebsiteTickPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      userId: string
+    }, ExtArgs["result"]["website"]>
+    composites: {}
+  }
+
+  type WebsiteGetPayload<S extends boolean | null | undefined | WebsiteDefaultArgs> = $Result.GetResult<Prisma.$WebsitePayload, S>
+
+  type WebsiteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WebsiteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WebsiteCountAggregateInputType | true
+    }
+
+  export interface WebsiteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Website'], meta: { name: 'Website' } }
+    /**
+     * Find zero or one Website that matches the filter.
+     * @param {WebsiteFindUniqueArgs} args - Arguments to find a Website
+     * @example
+     * // Get one Website
+     * const website = await prisma.website.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WebsiteFindUniqueArgs>(args: SelectSubset<T, WebsiteFindUniqueArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Website that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WebsiteFindUniqueOrThrowArgs} args - Arguments to find a Website
+     * @example
+     * // Get one Website
+     * const website = await prisma.website.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WebsiteFindUniqueOrThrowArgs>(args: SelectSubset<T, WebsiteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Website that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteFindFirstArgs} args - Arguments to find a Website
+     * @example
+     * // Get one Website
+     * const website = await prisma.website.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WebsiteFindFirstArgs>(args?: SelectSubset<T, WebsiteFindFirstArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Website that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteFindFirstOrThrowArgs} args - Arguments to find a Website
+     * @example
+     * // Get one Website
+     * const website = await prisma.website.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WebsiteFindFirstOrThrowArgs>(args?: SelectSubset<T, WebsiteFindFirstOrThrowArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Websites that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Websites
+     * const websites = await prisma.website.findMany()
+     * 
+     * // Get first 10 Websites
+     * const websites = await prisma.website.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const websiteWithIdOnly = await prisma.website.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WebsiteFindManyArgs>(args?: SelectSubset<T, WebsiteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Website.
+     * @param {WebsiteCreateArgs} args - Arguments to create a Website.
+     * @example
+     * // Create one Website
+     * const Website = await prisma.website.create({
+     *   data: {
+     *     // ... data to create a Website
+     *   }
+     * })
+     * 
+     */
+    create<T extends WebsiteCreateArgs>(args: SelectSubset<T, WebsiteCreateArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Websites.
+     * @param {WebsiteCreateManyArgs} args - Arguments to create many Websites.
+     * @example
+     * // Create many Websites
+     * const website = await prisma.website.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WebsiteCreateManyArgs>(args?: SelectSubset<T, WebsiteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Websites and returns the data saved in the database.
+     * @param {WebsiteCreateManyAndReturnArgs} args - Arguments to create many Websites.
+     * @example
+     * // Create many Websites
+     * const website = await prisma.website.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Websites and only return the `id`
+     * const websiteWithIdOnly = await prisma.website.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WebsiteCreateManyAndReturnArgs>(args?: SelectSubset<T, WebsiteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Website.
+     * @param {WebsiteDeleteArgs} args - Arguments to delete one Website.
+     * @example
+     * // Delete one Website
+     * const Website = await prisma.website.delete({
+     *   where: {
+     *     // ... filter to delete one Website
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WebsiteDeleteArgs>(args: SelectSubset<T, WebsiteDeleteArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Website.
+     * @param {WebsiteUpdateArgs} args - Arguments to update one Website.
+     * @example
+     * // Update one Website
+     * const website = await prisma.website.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WebsiteUpdateArgs>(args: SelectSubset<T, WebsiteUpdateArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Websites.
+     * @param {WebsiteDeleteManyArgs} args - Arguments to filter Websites to delete.
+     * @example
+     * // Delete a few Websites
+     * const { count } = await prisma.website.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WebsiteDeleteManyArgs>(args?: SelectSubset<T, WebsiteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Websites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Websites
+     * const website = await prisma.website.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WebsiteUpdateManyArgs>(args: SelectSubset<T, WebsiteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Websites and returns the data updated in the database.
+     * @param {WebsiteUpdateManyAndReturnArgs} args - Arguments to update many Websites.
+     * @example
+     * // Update many Websites
+     * const website = await prisma.website.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Websites and only return the `id`
+     * const websiteWithIdOnly = await prisma.website.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WebsiteUpdateManyAndReturnArgs>(args: SelectSubset<T, WebsiteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Website.
+     * @param {WebsiteUpsertArgs} args - Arguments to update or create a Website.
+     * @example
+     * // Update or create a Website
+     * const website = await prisma.website.upsert({
+     *   create: {
+     *     // ... data to create a Website
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Website we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WebsiteUpsertArgs>(args: SelectSubset<T, WebsiteUpsertArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Websites.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteCountArgs} args - Arguments to filter Websites to count.
+     * @example
+     * // Count the number of Websites
+     * const count = await prisma.website.count({
+     *   where: {
+     *     // ... the filter for the Websites we want to count
+     *   }
+     * })
+    **/
+    count<T extends WebsiteCountArgs>(
+      args?: Subset<T, WebsiteCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WebsiteCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Website.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WebsiteAggregateArgs>(args: Subset<T, WebsiteAggregateArgs>): Prisma.PrismaPromise<GetWebsiteAggregateType<T>>
+
+    /**
+     * Group by Website.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WebsiteGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WebsiteGroupByArgs['orderBy'] }
+        : { orderBy?: WebsiteGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WebsiteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWebsiteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Website model
+   */
+  readonly fields: WebsiteFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Website.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WebsiteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ticks<T extends Website$ticksArgs<ExtArgs> = {}>(args?: Subset<T, Website$ticksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Website model
+   */
+  interface WebsiteFieldRefs {
+    readonly id: FieldRef<"Website", 'String'>
+    readonly url: FieldRef<"Website", 'String'>
+    readonly userId: FieldRef<"Website", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Website findUnique
+   */
+  export type WebsiteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter, which Website to fetch.
+     */
+    where: WebsiteWhereUniqueInput
+  }
+
+  /**
+   * Website findUniqueOrThrow
+   */
+  export type WebsiteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter, which Website to fetch.
+     */
+    where: WebsiteWhereUniqueInput
+  }
+
+  /**
+   * Website findFirst
+   */
+  export type WebsiteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter, which Website to fetch.
+     */
+    where?: WebsiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Websites to fetch.
+     */
+    orderBy?: WebsiteOrderByWithRelationInput | WebsiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Websites.
+     */
+    cursor?: WebsiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Websites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Websites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Websites.
+     */
+    distinct?: WebsiteScalarFieldEnum | WebsiteScalarFieldEnum[]
+  }
+
+  /**
+   * Website findFirstOrThrow
+   */
+  export type WebsiteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter, which Website to fetch.
+     */
+    where?: WebsiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Websites to fetch.
+     */
+    orderBy?: WebsiteOrderByWithRelationInput | WebsiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Websites.
+     */
+    cursor?: WebsiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Websites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Websites.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Websites.
+     */
+    distinct?: WebsiteScalarFieldEnum | WebsiteScalarFieldEnum[]
+  }
+
+  /**
+   * Website findMany
+   */
+  export type WebsiteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter, which Websites to fetch.
+     */
+    where?: WebsiteWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Websites to fetch.
+     */
+    orderBy?: WebsiteOrderByWithRelationInput | WebsiteOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Websites.
+     */
+    cursor?: WebsiteWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Websites from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Websites.
+     */
+    skip?: number
+    distinct?: WebsiteScalarFieldEnum | WebsiteScalarFieldEnum[]
+  }
+
+  /**
+   * Website create
+   */
+  export type WebsiteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Website.
+     */
+    data: XOR<WebsiteCreateInput, WebsiteUncheckedCreateInput>
+  }
+
+  /**
+   * Website createMany
+   */
+  export type WebsiteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Websites.
+     */
+    data: WebsiteCreateManyInput | WebsiteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Website createManyAndReturn
+   */
+  export type WebsiteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * The data used to create many Websites.
+     */
+    data: WebsiteCreateManyInput | WebsiteCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Website update
+   */
+  export type WebsiteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Website.
+     */
+    data: XOR<WebsiteUpdateInput, WebsiteUncheckedUpdateInput>
+    /**
+     * Choose, which Website to update.
+     */
+    where: WebsiteWhereUniqueInput
+  }
+
+  /**
+   * Website updateMany
+   */
+  export type WebsiteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Websites.
+     */
+    data: XOR<WebsiteUpdateManyMutationInput, WebsiteUncheckedUpdateManyInput>
+    /**
+     * Filter which Websites to update
+     */
+    where?: WebsiteWhereInput
+    /**
+     * Limit how many Websites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Website updateManyAndReturn
+   */
+  export type WebsiteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * The data used to update Websites.
+     */
+    data: XOR<WebsiteUpdateManyMutationInput, WebsiteUncheckedUpdateManyInput>
+    /**
+     * Filter which Websites to update
+     */
+    where?: WebsiteWhereInput
+    /**
+     * Limit how many Websites to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Website upsert
+   */
+  export type WebsiteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Website to update in case it exists.
+     */
+    where: WebsiteWhereUniqueInput
+    /**
+     * In case the Website found by the `where` argument doesn't exist, create a new Website with this data.
+     */
+    create: XOR<WebsiteCreateInput, WebsiteUncheckedCreateInput>
+    /**
+     * In case the Website was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WebsiteUpdateInput, WebsiteUncheckedUpdateInput>
+  }
+
+  /**
+   * Website delete
+   */
+  export type WebsiteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+    /**
+     * Filter which Website to delete.
+     */
+    where: WebsiteWhereUniqueInput
+  }
+
+  /**
+   * Website deleteMany
+   */
+  export type WebsiteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Websites to delete
+     */
+    where?: WebsiteWhereInput
+    /**
+     * Limit how many Websites to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Website.ticks
+   */
+  export type Website$ticksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    where?: WebsiteTickWhereInput
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    cursor?: WebsiteTickWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WebsiteTickScalarFieldEnum | WebsiteTickScalarFieldEnum[]
+  }
+
+  /**
+   * Website without action
+   */
+  export type WebsiteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Website
+     */
+    select?: WebsiteSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Website
+     */
+    omit?: WebsiteOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model validator
+   */
+
+  export type AggregateValidator = {
+    _count: ValidatorCountAggregateOutputType | null
+    _min: ValidatorMinAggregateOutputType | null
+    _max: ValidatorMaxAggregateOutputType | null
+  }
+
+  export type ValidatorMinAggregateOutputType = {
+    id: string | null
+    publicKey: string | null
+    location: string | null
+    ipAddress: string | null
+  }
+
+  export type ValidatorMaxAggregateOutputType = {
+    id: string | null
+    publicKey: string | null
+    location: string | null
+    ipAddress: string | null
+  }
+
+  export type ValidatorCountAggregateOutputType = {
+    id: number
+    publicKey: number
+    location: number
+    ipAddress: number
+    _all: number
+  }
+
+
+  export type ValidatorMinAggregateInputType = {
+    id?: true
+    publicKey?: true
+    location?: true
+    ipAddress?: true
+  }
+
+  export type ValidatorMaxAggregateInputType = {
+    id?: true
+    publicKey?: true
+    location?: true
+    ipAddress?: true
+  }
+
+  export type ValidatorCountAggregateInputType = {
+    id?: true
+    publicKey?: true
+    location?: true
+    ipAddress?: true
+    _all?: true
+  }
+
+  export type ValidatorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which validator to aggregate.
+     */
+    where?: validatorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of validators to fetch.
+     */
+    orderBy?: validatorOrderByWithRelationInput | validatorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: validatorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` validators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` validators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned validators
+    **/
+    _count?: true | ValidatorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ValidatorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ValidatorMaxAggregateInputType
+  }
+
+  export type GetValidatorAggregateType<T extends ValidatorAggregateArgs> = {
+        [P in keyof T & keyof AggregateValidator]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateValidator[P]>
+      : GetScalarType<T[P], AggregateValidator[P]>
+  }
+
+
+
+
+  export type validatorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: validatorWhereInput
+    orderBy?: validatorOrderByWithAggregationInput | validatorOrderByWithAggregationInput[]
+    by: ValidatorScalarFieldEnum[] | ValidatorScalarFieldEnum
+    having?: validatorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ValidatorCountAggregateInputType | true
+    _min?: ValidatorMinAggregateInputType
+    _max?: ValidatorMaxAggregateInputType
+  }
+
+  export type ValidatorGroupByOutputType = {
+    id: string
+    publicKey: string
+    location: string
+    ipAddress: string
+    _count: ValidatorCountAggregateOutputType | null
+    _min: ValidatorMinAggregateOutputType | null
+    _max: ValidatorMaxAggregateOutputType | null
+  }
+
+  type GetValidatorGroupByPayload<T extends validatorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ValidatorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ValidatorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ValidatorGroupByOutputType[P]>
+            : GetScalarType<T[P], ValidatorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type validatorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicKey?: boolean
+    location?: boolean
+    ipAddress?: boolean
+    ticks?: boolean | validator$ticksArgs<ExtArgs>
+    _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["validator"]>
+
+  export type validatorSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicKey?: boolean
+    location?: boolean
+    ipAddress?: boolean
+  }, ExtArgs["result"]["validator"]>
+
+  export type validatorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    publicKey?: boolean
+    location?: boolean
+    ipAddress?: boolean
+  }, ExtArgs["result"]["validator"]>
+
+  export type validatorSelectScalar = {
+    id?: boolean
+    publicKey?: boolean
+    location?: boolean
+    ipAddress?: boolean
+  }
+
+  export type validatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "location" | "ipAddress", ExtArgs["result"]["validator"]>
+  export type validatorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    ticks?: boolean | validator$ticksArgs<ExtArgs>
+    _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type validatorIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type validatorIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $validatorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "validator"
+    objects: {
+      ticks: Prisma.$WebsiteTickPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      publicKey: string
+      location: string
+      ipAddress: string
+    }, ExtArgs["result"]["validator"]>
+    composites: {}
+  }
+
+  type validatorGetPayload<S extends boolean | null | undefined | validatorDefaultArgs> = $Result.GetResult<Prisma.$validatorPayload, S>
+
+  type validatorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<validatorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ValidatorCountAggregateInputType | true
+    }
+
+  export interface validatorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['validator'], meta: { name: 'validator' } }
+    /**
+     * Find zero or one Validator that matches the filter.
+     * @param {validatorFindUniqueArgs} args - Arguments to find a Validator
+     * @example
+     * // Get one Validator
+     * const validator = await prisma.validator.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends validatorFindUniqueArgs>(args: SelectSubset<T, validatorFindUniqueArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Validator that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {validatorFindUniqueOrThrowArgs} args - Arguments to find a Validator
+     * @example
+     * // Get one Validator
+     * const validator = await prisma.validator.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends validatorFindUniqueOrThrowArgs>(args: SelectSubset<T, validatorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Validator that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorFindFirstArgs} args - Arguments to find a Validator
+     * @example
+     * // Get one Validator
+     * const validator = await prisma.validator.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends validatorFindFirstArgs>(args?: SelectSubset<T, validatorFindFirstArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Validator that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorFindFirstOrThrowArgs} args - Arguments to find a Validator
+     * @example
+     * // Get one Validator
+     * const validator = await prisma.validator.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends validatorFindFirstOrThrowArgs>(args?: SelectSubset<T, validatorFindFirstOrThrowArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Validators that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Validators
+     * const validators = await prisma.validator.findMany()
+     * 
+     * // Get first 10 Validators
+     * const validators = await prisma.validator.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const validatorWithIdOnly = await prisma.validator.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends validatorFindManyArgs>(args?: SelectSubset<T, validatorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Validator.
+     * @param {validatorCreateArgs} args - Arguments to create a Validator.
+     * @example
+     * // Create one Validator
+     * const Validator = await prisma.validator.create({
+     *   data: {
+     *     // ... data to create a Validator
+     *   }
+     * })
+     * 
+     */
+    create<T extends validatorCreateArgs>(args: SelectSubset<T, validatorCreateArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Validators.
+     * @param {validatorCreateManyArgs} args - Arguments to create many Validators.
+     * @example
+     * // Create many Validators
+     * const validator = await prisma.validator.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends validatorCreateManyArgs>(args?: SelectSubset<T, validatorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Validators and returns the data saved in the database.
+     * @param {validatorCreateManyAndReturnArgs} args - Arguments to create many Validators.
+     * @example
+     * // Create many Validators
+     * const validator = await prisma.validator.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Validators and only return the `id`
+     * const validatorWithIdOnly = await prisma.validator.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends validatorCreateManyAndReturnArgs>(args?: SelectSubset<T, validatorCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Validator.
+     * @param {validatorDeleteArgs} args - Arguments to delete one Validator.
+     * @example
+     * // Delete one Validator
+     * const Validator = await prisma.validator.delete({
+     *   where: {
+     *     // ... filter to delete one Validator
+     *   }
+     * })
+     * 
+     */
+    delete<T extends validatorDeleteArgs>(args: SelectSubset<T, validatorDeleteArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Validator.
+     * @param {validatorUpdateArgs} args - Arguments to update one Validator.
+     * @example
+     * // Update one Validator
+     * const validator = await prisma.validator.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends validatorUpdateArgs>(args: SelectSubset<T, validatorUpdateArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Validators.
+     * @param {validatorDeleteManyArgs} args - Arguments to filter Validators to delete.
+     * @example
+     * // Delete a few Validators
+     * const { count } = await prisma.validator.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends validatorDeleteManyArgs>(args?: SelectSubset<T, validatorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Validators.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Validators
+     * const validator = await prisma.validator.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends validatorUpdateManyArgs>(args: SelectSubset<T, validatorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Validators and returns the data updated in the database.
+     * @param {validatorUpdateManyAndReturnArgs} args - Arguments to update many Validators.
+     * @example
+     * // Update many Validators
+     * const validator = await prisma.validator.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Validators and only return the `id`
+     * const validatorWithIdOnly = await prisma.validator.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends validatorUpdateManyAndReturnArgs>(args: SelectSubset<T, validatorUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Validator.
+     * @param {validatorUpsertArgs} args - Arguments to update or create a Validator.
+     * @example
+     * // Update or create a Validator
+     * const validator = await prisma.validator.upsert({
+     *   create: {
+     *     // ... data to create a Validator
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Validator we want to update
+     *   }
+     * })
+     */
+    upsert<T extends validatorUpsertArgs>(args: SelectSubset<T, validatorUpsertArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Validators.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorCountArgs} args - Arguments to filter Validators to count.
+     * @example
+     * // Count the number of Validators
+     * const count = await prisma.validator.count({
+     *   where: {
+     *     // ... the filter for the Validators we want to count
+     *   }
+     * })
+    **/
+    count<T extends validatorCountArgs>(
+      args?: Subset<T, validatorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ValidatorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Validator.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ValidatorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ValidatorAggregateArgs>(args: Subset<T, ValidatorAggregateArgs>): Prisma.PrismaPromise<GetValidatorAggregateType<T>>
+
+    /**
+     * Group by Validator.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {validatorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends validatorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: validatorGroupByArgs['orderBy'] }
+        : { orderBy?: validatorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, validatorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetValidatorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the validator model
+   */
+  readonly fields: validatorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for validator.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__validatorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    ticks<T extends validator$ticksArgs<ExtArgs> = {}>(args?: Subset<T, validator$ticksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the validator model
+   */
+  interface validatorFieldRefs {
+    readonly id: FieldRef<"validator", 'String'>
+    readonly publicKey: FieldRef<"validator", 'String'>
+    readonly location: FieldRef<"validator", 'String'>
+    readonly ipAddress: FieldRef<"validator", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * validator findUnique
+   */
+  export type validatorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter, which validator to fetch.
+     */
+    where: validatorWhereUniqueInput
+  }
+
+  /**
+   * validator findUniqueOrThrow
+   */
+  export type validatorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter, which validator to fetch.
+     */
+    where: validatorWhereUniqueInput
+  }
+
+  /**
+   * validator findFirst
+   */
+  export type validatorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter, which validator to fetch.
+     */
+    where?: validatorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of validators to fetch.
+     */
+    orderBy?: validatorOrderByWithRelationInput | validatorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for validators.
+     */
+    cursor?: validatorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` validators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` validators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of validators.
+     */
+    distinct?: ValidatorScalarFieldEnum | ValidatorScalarFieldEnum[]
+  }
+
+  /**
+   * validator findFirstOrThrow
+   */
+  export type validatorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter, which validator to fetch.
+     */
+    where?: validatorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of validators to fetch.
+     */
+    orderBy?: validatorOrderByWithRelationInput | validatorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for validators.
+     */
+    cursor?: validatorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` validators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` validators.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of validators.
+     */
+    distinct?: ValidatorScalarFieldEnum | ValidatorScalarFieldEnum[]
+  }
+
+  /**
+   * validator findMany
+   */
+  export type validatorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter, which validators to fetch.
+     */
+    where?: validatorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of validators to fetch.
+     */
+    orderBy?: validatorOrderByWithRelationInput | validatorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing validators.
+     */
+    cursor?: validatorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` validators from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` validators.
+     */
+    skip?: number
+    distinct?: ValidatorScalarFieldEnum | ValidatorScalarFieldEnum[]
+  }
+
+  /**
+   * validator create
+   */
+  export type validatorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a validator.
+     */
+    data: XOR<validatorCreateInput, validatorUncheckedCreateInput>
+  }
+
+  /**
+   * validator createMany
+   */
+  export type validatorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many validators.
+     */
+    data: validatorCreateManyInput | validatorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * validator createManyAndReturn
+   */
+  export type validatorCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * The data used to create many validators.
+     */
+    data: validatorCreateManyInput | validatorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * validator update
+   */
+  export type validatorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a validator.
+     */
+    data: XOR<validatorUpdateInput, validatorUncheckedUpdateInput>
+    /**
+     * Choose, which validator to update.
+     */
+    where: validatorWhereUniqueInput
+  }
+
+  /**
+   * validator updateMany
+   */
+  export type validatorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update validators.
+     */
+    data: XOR<validatorUpdateManyMutationInput, validatorUncheckedUpdateManyInput>
+    /**
+     * Filter which validators to update
+     */
+    where?: validatorWhereInput
+    /**
+     * Limit how many validators to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * validator updateManyAndReturn
+   */
+  export type validatorUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * The data used to update validators.
+     */
+    data: XOR<validatorUpdateManyMutationInput, validatorUncheckedUpdateManyInput>
+    /**
+     * Filter which validators to update
+     */
+    where?: validatorWhereInput
+    /**
+     * Limit how many validators to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * validator upsert
+   */
+  export type validatorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the validator to update in case it exists.
+     */
+    where: validatorWhereUniqueInput
+    /**
+     * In case the validator found by the `where` argument doesn't exist, create a new validator with this data.
+     */
+    create: XOR<validatorCreateInput, validatorUncheckedCreateInput>
+    /**
+     * In case the validator was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<validatorUpdateInput, validatorUncheckedUpdateInput>
+  }
+
+  /**
+   * validator delete
+   */
+  export type validatorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+    /**
+     * Filter which validator to delete.
+     */
+    where: validatorWhereUniqueInput
+  }
+
+  /**
+   * validator deleteMany
+   */
+  export type validatorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which validators to delete
+     */
+    where?: validatorWhereInput
+    /**
+     * Limit how many validators to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * validator.ticks
+   */
+  export type validator$ticksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    where?: WebsiteTickWhereInput
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    cursor?: WebsiteTickWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: WebsiteTickScalarFieldEnum | WebsiteTickScalarFieldEnum[]
+  }
+
+  /**
+   * validator without action
+   */
+  export type validatorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the validator
+     */
+    select?: validatorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the validator
+     */
+    omit?: validatorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: validatorInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model WebsiteTick
+   */
+
+  export type AggregateWebsiteTick = {
+    _count: WebsiteTickCountAggregateOutputType | null
+    _avg: WebsiteTickAvgAggregateOutputType | null
+    _sum: WebsiteTickSumAggregateOutputType | null
+    _min: WebsiteTickMinAggregateOutputType | null
+    _max: WebsiteTickMaxAggregateOutputType | null
+  }
+
+  export type WebsiteTickAvgAggregateOutputType = {
+    latency: number | null
+  }
+
+  export type WebsiteTickSumAggregateOutputType = {
+    latency: number | null
+  }
+
+  export type WebsiteTickMinAggregateOutputType = {
+    id: string | null
+    websiteId: string | null
+    validatorId: string | null
+    createdAt: Date | null
+    status: $Enums.WebsiteStatus | null
+    latency: number | null
+  }
+
+  export type WebsiteTickMaxAggregateOutputType = {
+    id: string | null
+    websiteId: string | null
+    validatorId: string | null
+    createdAt: Date | null
+    status: $Enums.WebsiteStatus | null
+    latency: number | null
+  }
+
+  export type WebsiteTickCountAggregateOutputType = {
+    id: number
+    websiteId: number
+    validatorId: number
+    createdAt: number
+    status: number
+    latency: number
+    _all: number
+  }
+
+
+  export type WebsiteTickAvgAggregateInputType = {
+    latency?: true
+  }
+
+  export type WebsiteTickSumAggregateInputType = {
+    latency?: true
+  }
+
+  export type WebsiteTickMinAggregateInputType = {
+    id?: true
+    websiteId?: true
+    validatorId?: true
+    createdAt?: true
+    status?: true
+    latency?: true
+  }
+
+  export type WebsiteTickMaxAggregateInputType = {
+    id?: true
+    websiteId?: true
+    validatorId?: true
+    createdAt?: true
+    status?: true
+    latency?: true
+  }
+
+  export type WebsiteTickCountAggregateInputType = {
+    id?: true
+    websiteId?: true
+    validatorId?: true
+    createdAt?: true
+    status?: true
+    latency?: true
+    _all?: true
+  }
+
+  export type WebsiteTickAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WebsiteTick to aggregate.
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WebsiteTicks to fetch.
+     */
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WebsiteTickWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WebsiteTicks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WebsiteTicks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned WebsiteTicks
+    **/
+    _count?: true | WebsiteTickCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: WebsiteTickAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: WebsiteTickSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WebsiteTickMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WebsiteTickMaxAggregateInputType
+  }
+
+  export type GetWebsiteTickAggregateType<T extends WebsiteTickAggregateArgs> = {
+        [P in keyof T & keyof AggregateWebsiteTick]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWebsiteTick[P]>
+      : GetScalarType<T[P], AggregateWebsiteTick[P]>
+  }
+
+
+
+
+  export type WebsiteTickGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WebsiteTickWhereInput
+    orderBy?: WebsiteTickOrderByWithAggregationInput | WebsiteTickOrderByWithAggregationInput[]
+    by: WebsiteTickScalarFieldEnum[] | WebsiteTickScalarFieldEnum
+    having?: WebsiteTickScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WebsiteTickCountAggregateInputType | true
+    _avg?: WebsiteTickAvgAggregateInputType
+    _sum?: WebsiteTickSumAggregateInputType
+    _min?: WebsiteTickMinAggregateInputType
+    _max?: WebsiteTickMaxAggregateInputType
+  }
+
+  export type WebsiteTickGroupByOutputType = {
+    id: string
+    websiteId: string
+    validatorId: string
+    createdAt: Date
+    status: $Enums.WebsiteStatus
+    latency: number
+    _count: WebsiteTickCountAggregateOutputType | null
+    _avg: WebsiteTickAvgAggregateOutputType | null
+    _sum: WebsiteTickSumAggregateOutputType | null
+    _min: WebsiteTickMinAggregateOutputType | null
+    _max: WebsiteTickMaxAggregateOutputType | null
+  }
+
+  type GetWebsiteTickGroupByPayload<T extends WebsiteTickGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WebsiteTickGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WebsiteTickGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WebsiteTickGroupByOutputType[P]>
+            : GetScalarType<T[P], WebsiteTickGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WebsiteTickSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    websiteId?: boolean
+    validatorId?: boolean
+    createdAt?: boolean
+    status?: boolean
+    latency?: boolean
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["websiteTick"]>
+
+  export type WebsiteTickSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    websiteId?: boolean
+    validatorId?: boolean
+    createdAt?: boolean
+    status?: boolean
+    latency?: boolean
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["websiteTick"]>
+
+  export type WebsiteTickSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    websiteId?: boolean
+    validatorId?: boolean
+    createdAt?: boolean
+    status?: boolean
+    latency?: boolean
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["websiteTick"]>
+
+  export type WebsiteTickSelectScalar = {
+    id?: boolean
+    websiteId?: boolean
+    validatorId?: boolean
+    createdAt?: boolean
+    status?: boolean
+    latency?: boolean
+  }
+
+  export type WebsiteTickOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "websiteId" | "validatorId" | "createdAt" | "status" | "latency", ExtArgs["result"]["websiteTick"]>
+  export type WebsiteTickInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }
+  export type WebsiteTickIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }
+  export type WebsiteTickIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    website?: boolean | WebsiteDefaultArgs<ExtArgs>
+    validator?: boolean | validatorDefaultArgs<ExtArgs>
+  }
+
+  export type $WebsiteTickPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "WebsiteTick"
+    objects: {
+      website: Prisma.$WebsitePayload<ExtArgs>
+      validator: Prisma.$validatorPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      websiteId: string
+      validatorId: string
+      createdAt: Date
+      status: $Enums.WebsiteStatus
+      latency: number
+    }, ExtArgs["result"]["websiteTick"]>
+    composites: {}
+  }
+
+  type WebsiteTickGetPayload<S extends boolean | null | undefined | WebsiteTickDefaultArgs> = $Result.GetResult<Prisma.$WebsiteTickPayload, S>
+
+  type WebsiteTickCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WebsiteTickFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WebsiteTickCountAggregateInputType | true
+    }
+
+  export interface WebsiteTickDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WebsiteTick'], meta: { name: 'WebsiteTick' } }
+    /**
+     * Find zero or one WebsiteTick that matches the filter.
+     * @param {WebsiteTickFindUniqueArgs} args - Arguments to find a WebsiteTick
+     * @example
+     * // Get one WebsiteTick
+     * const websiteTick = await prisma.websiteTick.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WebsiteTickFindUniqueArgs>(args: SelectSubset<T, WebsiteTickFindUniqueArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one WebsiteTick that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WebsiteTickFindUniqueOrThrowArgs} args - Arguments to find a WebsiteTick
+     * @example
+     * // Get one WebsiteTick
+     * const websiteTick = await prisma.websiteTick.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WebsiteTickFindUniqueOrThrowArgs>(args: SelectSubset<T, WebsiteTickFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WebsiteTick that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickFindFirstArgs} args - Arguments to find a WebsiteTick
+     * @example
+     * // Get one WebsiteTick
+     * const websiteTick = await prisma.websiteTick.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WebsiteTickFindFirstArgs>(args?: SelectSubset<T, WebsiteTickFindFirstArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first WebsiteTick that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickFindFirstOrThrowArgs} args - Arguments to find a WebsiteTick
+     * @example
+     * // Get one WebsiteTick
+     * const websiteTick = await prisma.websiteTick.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WebsiteTickFindFirstOrThrowArgs>(args?: SelectSubset<T, WebsiteTickFindFirstOrThrowArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more WebsiteTicks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all WebsiteTicks
+     * const websiteTicks = await prisma.websiteTick.findMany()
+     * 
+     * // Get first 10 WebsiteTicks
+     * const websiteTicks = await prisma.websiteTick.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const websiteTickWithIdOnly = await prisma.websiteTick.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WebsiteTickFindManyArgs>(args?: SelectSubset<T, WebsiteTickFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a WebsiteTick.
+     * @param {WebsiteTickCreateArgs} args - Arguments to create a WebsiteTick.
+     * @example
+     * // Create one WebsiteTick
+     * const WebsiteTick = await prisma.websiteTick.create({
+     *   data: {
+     *     // ... data to create a WebsiteTick
+     *   }
+     * })
+     * 
+     */
+    create<T extends WebsiteTickCreateArgs>(args: SelectSubset<T, WebsiteTickCreateArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many WebsiteTicks.
+     * @param {WebsiteTickCreateManyArgs} args - Arguments to create many WebsiteTicks.
+     * @example
+     * // Create many WebsiteTicks
+     * const websiteTick = await prisma.websiteTick.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WebsiteTickCreateManyArgs>(args?: SelectSubset<T, WebsiteTickCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many WebsiteTicks and returns the data saved in the database.
+     * @param {WebsiteTickCreateManyAndReturnArgs} args - Arguments to create many WebsiteTicks.
+     * @example
+     * // Create many WebsiteTicks
+     * const websiteTick = await prisma.websiteTick.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many WebsiteTicks and only return the `id`
+     * const websiteTickWithIdOnly = await prisma.websiteTick.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WebsiteTickCreateManyAndReturnArgs>(args?: SelectSubset<T, WebsiteTickCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a WebsiteTick.
+     * @param {WebsiteTickDeleteArgs} args - Arguments to delete one WebsiteTick.
+     * @example
+     * // Delete one WebsiteTick
+     * const WebsiteTick = await prisma.websiteTick.delete({
+     *   where: {
+     *     // ... filter to delete one WebsiteTick
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WebsiteTickDeleteArgs>(args: SelectSubset<T, WebsiteTickDeleteArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one WebsiteTick.
+     * @param {WebsiteTickUpdateArgs} args - Arguments to update one WebsiteTick.
+     * @example
+     * // Update one WebsiteTick
+     * const websiteTick = await prisma.websiteTick.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WebsiteTickUpdateArgs>(args: SelectSubset<T, WebsiteTickUpdateArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more WebsiteTicks.
+     * @param {WebsiteTickDeleteManyArgs} args - Arguments to filter WebsiteTicks to delete.
+     * @example
+     * // Delete a few WebsiteTicks
+     * const { count } = await prisma.websiteTick.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WebsiteTickDeleteManyArgs>(args?: SelectSubset<T, WebsiteTickDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WebsiteTicks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many WebsiteTicks
+     * const websiteTick = await prisma.websiteTick.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WebsiteTickUpdateManyArgs>(args: SelectSubset<T, WebsiteTickUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more WebsiteTicks and returns the data updated in the database.
+     * @param {WebsiteTickUpdateManyAndReturnArgs} args - Arguments to update many WebsiteTicks.
+     * @example
+     * // Update many WebsiteTicks
+     * const websiteTick = await prisma.websiteTick.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more WebsiteTicks and only return the `id`
+     * const websiteTickWithIdOnly = await prisma.websiteTick.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WebsiteTickUpdateManyAndReturnArgs>(args: SelectSubset<T, WebsiteTickUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one WebsiteTick.
+     * @param {WebsiteTickUpsertArgs} args - Arguments to update or create a WebsiteTick.
+     * @example
+     * // Update or create a WebsiteTick
+     * const websiteTick = await prisma.websiteTick.upsert({
+     *   create: {
+     *     // ... data to create a WebsiteTick
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the WebsiteTick we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WebsiteTickUpsertArgs>(args: SelectSubset<T, WebsiteTickUpsertArgs<ExtArgs>>): Prisma__WebsiteTickClient<$Result.GetResult<Prisma.$WebsiteTickPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of WebsiteTicks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickCountArgs} args - Arguments to filter WebsiteTicks to count.
+     * @example
+     * // Count the number of WebsiteTicks
+     * const count = await prisma.websiteTick.count({
+     *   where: {
+     *     // ... the filter for the WebsiteTicks we want to count
+     *   }
+     * })
+    **/
+    count<T extends WebsiteTickCountArgs>(
+      args?: Subset<T, WebsiteTickCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WebsiteTickCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a WebsiteTick.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WebsiteTickAggregateArgs>(args: Subset<T, WebsiteTickAggregateArgs>): Prisma.PrismaPromise<GetWebsiteTickAggregateType<T>>
+
+    /**
+     * Group by WebsiteTick.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WebsiteTickGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WebsiteTickGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WebsiteTickGroupByArgs['orderBy'] }
+        : { orderBy?: WebsiteTickGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WebsiteTickGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWebsiteTickGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the WebsiteTick model
+   */
+  readonly fields: WebsiteTickFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for WebsiteTick.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WebsiteTickClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    website<T extends WebsiteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WebsiteDefaultArgs<ExtArgs>>): Prisma__WebsiteClient<$Result.GetResult<Prisma.$WebsitePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    validator<T extends validatorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, validatorDefaultArgs<ExtArgs>>): Prisma__validatorClient<$Result.GetResult<Prisma.$validatorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the WebsiteTick model
+   */
+  interface WebsiteTickFieldRefs {
+    readonly id: FieldRef<"WebsiteTick", 'String'>
+    readonly websiteId: FieldRef<"WebsiteTick", 'String'>
+    readonly validatorId: FieldRef<"WebsiteTick", 'String'>
+    readonly createdAt: FieldRef<"WebsiteTick", 'DateTime'>
+    readonly status: FieldRef<"WebsiteTick", 'WebsiteStatus'>
+    readonly latency: FieldRef<"WebsiteTick", 'Float'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * WebsiteTick findUnique
+   */
+  export type WebsiteTickFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter, which WebsiteTick to fetch.
+     */
+    where: WebsiteTickWhereUniqueInput
+  }
+
+  /**
+   * WebsiteTick findUniqueOrThrow
+   */
+  export type WebsiteTickFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter, which WebsiteTick to fetch.
+     */
+    where: WebsiteTickWhereUniqueInput
+  }
+
+  /**
+   * WebsiteTick findFirst
+   */
+  export type WebsiteTickFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter, which WebsiteTick to fetch.
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WebsiteTicks to fetch.
+     */
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WebsiteTicks.
+     */
+    cursor?: WebsiteTickWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WebsiteTicks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WebsiteTicks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WebsiteTicks.
+     */
+    distinct?: WebsiteTickScalarFieldEnum | WebsiteTickScalarFieldEnum[]
+  }
+
+  /**
+   * WebsiteTick findFirstOrThrow
+   */
+  export type WebsiteTickFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter, which WebsiteTick to fetch.
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WebsiteTicks to fetch.
+     */
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for WebsiteTicks.
+     */
+    cursor?: WebsiteTickWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WebsiteTicks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WebsiteTicks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of WebsiteTicks.
+     */
+    distinct?: WebsiteTickScalarFieldEnum | WebsiteTickScalarFieldEnum[]
+  }
+
+  /**
+   * WebsiteTick findMany
+   */
+  export type WebsiteTickFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter, which WebsiteTicks to fetch.
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of WebsiteTicks to fetch.
+     */
+    orderBy?: WebsiteTickOrderByWithRelationInput | WebsiteTickOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing WebsiteTicks.
+     */
+    cursor?: WebsiteTickWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` WebsiteTicks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` WebsiteTicks.
+     */
+    skip?: number
+    distinct?: WebsiteTickScalarFieldEnum | WebsiteTickScalarFieldEnum[]
+  }
+
+  /**
+   * WebsiteTick create
+   */
+  export type WebsiteTickCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * The data needed to create a WebsiteTick.
+     */
+    data: XOR<WebsiteTickCreateInput, WebsiteTickUncheckedCreateInput>
+  }
+
+  /**
+   * WebsiteTick createMany
+   */
+  export type WebsiteTickCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many WebsiteTicks.
+     */
+    data: WebsiteTickCreateManyInput | WebsiteTickCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * WebsiteTick createManyAndReturn
+   */
+  export type WebsiteTickCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * The data used to create many WebsiteTicks.
+     */
+    data: WebsiteTickCreateManyInput | WebsiteTickCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WebsiteTick update
+   */
+  export type WebsiteTickUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * The data needed to update a WebsiteTick.
+     */
+    data: XOR<WebsiteTickUpdateInput, WebsiteTickUncheckedUpdateInput>
+    /**
+     * Choose, which WebsiteTick to update.
+     */
+    where: WebsiteTickWhereUniqueInput
+  }
+
+  /**
+   * WebsiteTick updateMany
+   */
+  export type WebsiteTickUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update WebsiteTicks.
+     */
+    data: XOR<WebsiteTickUpdateManyMutationInput, WebsiteTickUncheckedUpdateManyInput>
+    /**
+     * Filter which WebsiteTicks to update
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * Limit how many WebsiteTicks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * WebsiteTick updateManyAndReturn
+   */
+  export type WebsiteTickUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * The data used to update WebsiteTicks.
+     */
+    data: XOR<WebsiteTickUpdateManyMutationInput, WebsiteTickUncheckedUpdateManyInput>
+    /**
+     * Filter which WebsiteTicks to update
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * Limit how many WebsiteTicks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * WebsiteTick upsert
+   */
+  export type WebsiteTickUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * The filter to search for the WebsiteTick to update in case it exists.
+     */
+    where: WebsiteTickWhereUniqueInput
+    /**
+     * In case the WebsiteTick found by the `where` argument doesn't exist, create a new WebsiteTick with this data.
+     */
+    create: XOR<WebsiteTickCreateInput, WebsiteTickUncheckedCreateInput>
+    /**
+     * In case the WebsiteTick was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WebsiteTickUpdateInput, WebsiteTickUncheckedUpdateInput>
+  }
+
+  /**
+   * WebsiteTick delete
+   */
+  export type WebsiteTickDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+    /**
+     * Filter which WebsiteTick to delete.
+     */
+    where: WebsiteTickWhereUniqueInput
+  }
+
+  /**
+   * WebsiteTick deleteMany
+   */
+  export type WebsiteTickDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which WebsiteTicks to delete
+     */
+    where?: WebsiteTickWhereInput
+    /**
+     * Limit how many WebsiteTicks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * WebsiteTick without action
+   */
+  export type WebsiteTickDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the WebsiteTick
+     */
+    select?: WebsiteTickSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the WebsiteTick
+     */
+    omit?: WebsiteTickOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: WebsiteTickInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1895,12 +5447,42 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     email: 'email',
-    password: 'password',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+  export const WebsiteScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    userId: 'userId'
+  };
+
+  export type WebsiteScalarFieldEnum = (typeof WebsiteScalarFieldEnum)[keyof typeof WebsiteScalarFieldEnum]
+
+
+  export const ValidatorScalarFieldEnum: {
+    id: 'id',
+    publicKey: 'publicKey',
+    location: 'location',
+    ipAddress: 'ipAddress'
+  };
+
+  export type ValidatorScalarFieldEnum = (typeof ValidatorScalarFieldEnum)[keyof typeof ValidatorScalarFieldEnum]
+
+
+  export const WebsiteTickScalarFieldEnum: {
+    id: 'id',
+    websiteId: 'websiteId',
+    validatorId: 'validatorId',
+    createdAt: 'createdAt',
+    status: 'status',
+    latency: 'latency'
+  };
+
+  export type WebsiteTickScalarFieldEnum = (typeof WebsiteTickScalarFieldEnum)[keyof typeof WebsiteTickScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1961,6 +5543,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'WebsiteStatus'
+   */
+  export type EnumWebsiteStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WebsiteStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'WebsiteStatus[]'
+   */
+  export type ListEnumWebsiteStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WebsiteStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -1984,7 +5594,6 @@ export namespace Prisma {
     id?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
     email?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }
@@ -1993,7 +5602,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2005,7 +5613,6 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringNullableFilter<"User"> | string | null
-    password?: StringNullableFilter<"User"> | string | null
     createdAt?: DateTimeFilter<"User"> | Date | string
     updatedAt?: DateTimeFilter<"User"> | Date | string
   }, "id" | "email">
@@ -2014,7 +5621,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrderInput | SortOrder
     email?: SortOrderInput | SortOrder
-    password?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
@@ -2029,16 +5635,174 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
     email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    password?: StringNullableWithAggregatesFilter<"User"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
+  }
+
+  export type WebsiteWhereInput = {
+    AND?: WebsiteWhereInput | WebsiteWhereInput[]
+    OR?: WebsiteWhereInput[]
+    NOT?: WebsiteWhereInput | WebsiteWhereInput[]
+    id?: StringFilter<"Website"> | string
+    url?: StringFilter<"Website"> | string
+    userId?: StringFilter<"Website"> | string
+    ticks?: WebsiteTickListRelationFilter
+  }
+
+  export type WebsiteOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    ticks?: WebsiteTickOrderByRelationAggregateInput
+  }
+
+  export type WebsiteWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WebsiteWhereInput | WebsiteWhereInput[]
+    OR?: WebsiteWhereInput[]
+    NOT?: WebsiteWhereInput | WebsiteWhereInput[]
+    url?: StringFilter<"Website"> | string
+    userId?: StringFilter<"Website"> | string
+    ticks?: WebsiteTickListRelationFilter
+  }, "id">
+
+  export type WebsiteOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+    _count?: WebsiteCountOrderByAggregateInput
+    _max?: WebsiteMaxOrderByAggregateInput
+    _min?: WebsiteMinOrderByAggregateInput
+  }
+
+  export type WebsiteScalarWhereWithAggregatesInput = {
+    AND?: WebsiteScalarWhereWithAggregatesInput | WebsiteScalarWhereWithAggregatesInput[]
+    OR?: WebsiteScalarWhereWithAggregatesInput[]
+    NOT?: WebsiteScalarWhereWithAggregatesInput | WebsiteScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Website"> | string
+    url?: StringWithAggregatesFilter<"Website"> | string
+    userId?: StringWithAggregatesFilter<"Website"> | string
+  }
+
+  export type validatorWhereInput = {
+    AND?: validatorWhereInput | validatorWhereInput[]
+    OR?: validatorWhereInput[]
+    NOT?: validatorWhereInput | validatorWhereInput[]
+    id?: StringFilter<"validator"> | string
+    publicKey?: StringFilter<"validator"> | string
+    location?: StringFilter<"validator"> | string
+    ipAddress?: StringFilter<"validator"> | string
+    ticks?: WebsiteTickListRelationFilter
+  }
+
+  export type validatorOrderByWithRelationInput = {
+    id?: SortOrder
+    publicKey?: SortOrder
+    location?: SortOrder
+    ipAddress?: SortOrder
+    ticks?: WebsiteTickOrderByRelationAggregateInput
+  }
+
+  export type validatorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: validatorWhereInput | validatorWhereInput[]
+    OR?: validatorWhereInput[]
+    NOT?: validatorWhereInput | validatorWhereInput[]
+    publicKey?: StringFilter<"validator"> | string
+    location?: StringFilter<"validator"> | string
+    ipAddress?: StringFilter<"validator"> | string
+    ticks?: WebsiteTickListRelationFilter
+  }, "id">
+
+  export type validatorOrderByWithAggregationInput = {
+    id?: SortOrder
+    publicKey?: SortOrder
+    location?: SortOrder
+    ipAddress?: SortOrder
+    _count?: validatorCountOrderByAggregateInput
+    _max?: validatorMaxOrderByAggregateInput
+    _min?: validatorMinOrderByAggregateInput
+  }
+
+  export type validatorScalarWhereWithAggregatesInput = {
+    AND?: validatorScalarWhereWithAggregatesInput | validatorScalarWhereWithAggregatesInput[]
+    OR?: validatorScalarWhereWithAggregatesInput[]
+    NOT?: validatorScalarWhereWithAggregatesInput | validatorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"validator"> | string
+    publicKey?: StringWithAggregatesFilter<"validator"> | string
+    location?: StringWithAggregatesFilter<"validator"> | string
+    ipAddress?: StringWithAggregatesFilter<"validator"> | string
+  }
+
+  export type WebsiteTickWhereInput = {
+    AND?: WebsiteTickWhereInput | WebsiteTickWhereInput[]
+    OR?: WebsiteTickWhereInput[]
+    NOT?: WebsiteTickWhereInput | WebsiteTickWhereInput[]
+    id?: StringFilter<"WebsiteTick"> | string
+    websiteId?: StringFilter<"WebsiteTick"> | string
+    validatorId?: StringFilter<"WebsiteTick"> | string
+    createdAt?: DateTimeFilter<"WebsiteTick"> | Date | string
+    status?: EnumWebsiteStatusFilter<"WebsiteTick"> | $Enums.WebsiteStatus
+    latency?: FloatFilter<"WebsiteTick"> | number
+    website?: XOR<WebsiteScalarRelationFilter, WebsiteWhereInput>
+    validator?: XOR<ValidatorScalarRelationFilter, validatorWhereInput>
+  }
+
+  export type WebsiteTickOrderByWithRelationInput = {
+    id?: SortOrder
+    websiteId?: SortOrder
+    validatorId?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    latency?: SortOrder
+    website?: WebsiteOrderByWithRelationInput
+    validator?: validatorOrderByWithRelationInput
+  }
+
+  export type WebsiteTickWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WebsiteTickWhereInput | WebsiteTickWhereInput[]
+    OR?: WebsiteTickWhereInput[]
+    NOT?: WebsiteTickWhereInput | WebsiteTickWhereInput[]
+    websiteId?: StringFilter<"WebsiteTick"> | string
+    validatorId?: StringFilter<"WebsiteTick"> | string
+    createdAt?: DateTimeFilter<"WebsiteTick"> | Date | string
+    status?: EnumWebsiteStatusFilter<"WebsiteTick"> | $Enums.WebsiteStatus
+    latency?: FloatFilter<"WebsiteTick"> | number
+    website?: XOR<WebsiteScalarRelationFilter, WebsiteWhereInput>
+    validator?: XOR<ValidatorScalarRelationFilter, validatorWhereInput>
+  }, "id">
+
+  export type WebsiteTickOrderByWithAggregationInput = {
+    id?: SortOrder
+    websiteId?: SortOrder
+    validatorId?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    latency?: SortOrder
+    _count?: WebsiteTickCountOrderByAggregateInput
+    _avg?: WebsiteTickAvgOrderByAggregateInput
+    _max?: WebsiteTickMaxOrderByAggregateInput
+    _min?: WebsiteTickMinOrderByAggregateInput
+    _sum?: WebsiteTickSumOrderByAggregateInput
+  }
+
+  export type WebsiteTickScalarWhereWithAggregatesInput = {
+    AND?: WebsiteTickScalarWhereWithAggregatesInput | WebsiteTickScalarWhereWithAggregatesInput[]
+    OR?: WebsiteTickScalarWhereWithAggregatesInput[]
+    NOT?: WebsiteTickScalarWhereWithAggregatesInput | WebsiteTickScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"WebsiteTick"> | string
+    websiteId?: StringWithAggregatesFilter<"WebsiteTick"> | string
+    validatorId?: StringWithAggregatesFilter<"WebsiteTick"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"WebsiteTick"> | Date | string
+    status?: EnumWebsiteStatusWithAggregatesFilter<"WebsiteTick"> | $Enums.WebsiteStatus
+    latency?: FloatWithAggregatesFilter<"WebsiteTick"> | number
   }
 
   export type UserCreateInput = {
     id?: string
     name?: string | null
     email?: string | null
-    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2047,7 +5811,6 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2056,7 +5819,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2065,7 +5827,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2074,7 +5835,6 @@ export namespace Prisma {
     id?: string
     name?: string | null
     email?: string | null
-    password?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -2083,7 +5843,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -2092,9 +5851,168 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
     email?: NullableStringFieldUpdateOperationsInput | string | null
-    password?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WebsiteCreateInput = {
+    id?: string
+    url: string
+    userId: string
+    ticks?: WebsiteTickCreateNestedManyWithoutWebsiteInput
+  }
+
+  export type WebsiteUncheckedCreateInput = {
+    id?: string
+    url: string
+    userId: string
+    ticks?: WebsiteTickUncheckedCreateNestedManyWithoutWebsiteInput
+  }
+
+  export type WebsiteUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    ticks?: WebsiteTickUpdateManyWithoutWebsiteNestedInput
+  }
+
+  export type WebsiteUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    ticks?: WebsiteTickUncheckedUpdateManyWithoutWebsiteNestedInput
+  }
+
+  export type WebsiteCreateManyInput = {
+    id?: string
+    url: string
+    userId: string
+  }
+
+  export type WebsiteUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WebsiteUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type validatorCreateInput = {
+    id?: string
+    publicKey: string
+    location: string
+    ipAddress: string
+    ticks?: WebsiteTickCreateNestedManyWithoutValidatorInput
+  }
+
+  export type validatorUncheckedCreateInput = {
+    id?: string
+    publicKey: string
+    location: string
+    ipAddress: string
+    ticks?: WebsiteTickUncheckedCreateNestedManyWithoutValidatorInput
+  }
+
+  export type validatorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    ticks?: WebsiteTickUpdateManyWithoutValidatorNestedInput
+  }
+
+  export type validatorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    ticks?: WebsiteTickUncheckedUpdateManyWithoutValidatorNestedInput
+  }
+
+  export type validatorCreateManyInput = {
+    id?: string
+    publicKey: string
+    location: string
+    ipAddress: string
+  }
+
+  export type validatorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type validatorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WebsiteTickCreateInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+    website: WebsiteCreateNestedOneWithoutTicksInput
+    validator: validatorCreateNestedOneWithoutTicksInput
+  }
+
+  export type WebsiteTickUncheckedCreateInput = {
+    id?: string
+    websiteId: string
+    validatorId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+    website?: WebsiteUpdateOneRequiredWithoutTicksNestedInput
+    validator?: validatorUpdateOneRequiredWithoutTicksNestedInput
+  }
+
+  export type WebsiteTickUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    websiteId?: StringFieldUpdateOperationsInput | string
+    validatorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type WebsiteTickCreateManyInput = {
+    id?: string
+    websiteId: string
+    validatorId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type WebsiteTickUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    websiteId?: StringFieldUpdateOperationsInput | string
+    validatorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2147,7 +6065,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2156,7 +6073,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2165,7 +6081,6 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     email?: SortOrder
-    password?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -2220,6 +6135,144 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type WebsiteTickListRelationFilter = {
+    every?: WebsiteTickWhereInput
+    some?: WebsiteTickWhereInput
+    none?: WebsiteTickWhereInput
+  }
+
+  export type WebsiteTickOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type WebsiteCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type WebsiteMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type WebsiteMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    userId?: SortOrder
+  }
+
+  export type validatorCountOrderByAggregateInput = {
+    id?: SortOrder
+    publicKey?: SortOrder
+    location?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type validatorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    publicKey?: SortOrder
+    location?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type validatorMinOrderByAggregateInput = {
+    id?: SortOrder
+    publicKey?: SortOrder
+    location?: SortOrder
+    ipAddress?: SortOrder
+  }
+
+  export type EnumWebsiteStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWebsiteStatusFilter<$PrismaModel> | $Enums.WebsiteStatus
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type WebsiteScalarRelationFilter = {
+    is?: WebsiteWhereInput
+    isNot?: WebsiteWhereInput
+  }
+
+  export type ValidatorScalarRelationFilter = {
+    is?: validatorWhereInput
+    isNot?: validatorWhereInput
+  }
+
+  export type WebsiteTickCountOrderByAggregateInput = {
+    id?: SortOrder
+    websiteId?: SortOrder
+    validatorId?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    latency?: SortOrder
+  }
+
+  export type WebsiteTickAvgOrderByAggregateInput = {
+    latency?: SortOrder
+  }
+
+  export type WebsiteTickMaxOrderByAggregateInput = {
+    id?: SortOrder
+    websiteId?: SortOrder
+    validatorId?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    latency?: SortOrder
+  }
+
+  export type WebsiteTickMinOrderByAggregateInput = {
+    id?: SortOrder
+    websiteId?: SortOrder
+    validatorId?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    latency?: SortOrder
+  }
+
+  export type WebsiteTickSumOrderByAggregateInput = {
+    latency?: SortOrder
+  }
+
+  export type EnumWebsiteStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWebsiteStatusWithAggregatesFilter<$PrismaModel> | $Enums.WebsiteStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWebsiteStatusFilter<$PrismaModel>
+    _max?: NestedEnumWebsiteStatusFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2230,6 +6283,130 @@ export namespace Prisma {
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type WebsiteTickCreateNestedManyWithoutWebsiteInput = {
+    create?: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput> | WebsiteTickCreateWithoutWebsiteInput[] | WebsiteTickUncheckedCreateWithoutWebsiteInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutWebsiteInput | WebsiteTickCreateOrConnectWithoutWebsiteInput[]
+    createMany?: WebsiteTickCreateManyWebsiteInputEnvelope
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+  }
+
+  export type WebsiteTickUncheckedCreateNestedManyWithoutWebsiteInput = {
+    create?: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput> | WebsiteTickCreateWithoutWebsiteInput[] | WebsiteTickUncheckedCreateWithoutWebsiteInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutWebsiteInput | WebsiteTickCreateOrConnectWithoutWebsiteInput[]
+    createMany?: WebsiteTickCreateManyWebsiteInputEnvelope
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+  }
+
+  export type WebsiteTickUpdateManyWithoutWebsiteNestedInput = {
+    create?: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput> | WebsiteTickCreateWithoutWebsiteInput[] | WebsiteTickUncheckedCreateWithoutWebsiteInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutWebsiteInput | WebsiteTickCreateOrConnectWithoutWebsiteInput[]
+    upsert?: WebsiteTickUpsertWithWhereUniqueWithoutWebsiteInput | WebsiteTickUpsertWithWhereUniqueWithoutWebsiteInput[]
+    createMany?: WebsiteTickCreateManyWebsiteInputEnvelope
+    set?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    disconnect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    delete?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    update?: WebsiteTickUpdateWithWhereUniqueWithoutWebsiteInput | WebsiteTickUpdateWithWhereUniqueWithoutWebsiteInput[]
+    updateMany?: WebsiteTickUpdateManyWithWhereWithoutWebsiteInput | WebsiteTickUpdateManyWithWhereWithoutWebsiteInput[]
+    deleteMany?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+  }
+
+  export type WebsiteTickUncheckedUpdateManyWithoutWebsiteNestedInput = {
+    create?: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput> | WebsiteTickCreateWithoutWebsiteInput[] | WebsiteTickUncheckedCreateWithoutWebsiteInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutWebsiteInput | WebsiteTickCreateOrConnectWithoutWebsiteInput[]
+    upsert?: WebsiteTickUpsertWithWhereUniqueWithoutWebsiteInput | WebsiteTickUpsertWithWhereUniqueWithoutWebsiteInput[]
+    createMany?: WebsiteTickCreateManyWebsiteInputEnvelope
+    set?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    disconnect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    delete?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    update?: WebsiteTickUpdateWithWhereUniqueWithoutWebsiteInput | WebsiteTickUpdateWithWhereUniqueWithoutWebsiteInput[]
+    updateMany?: WebsiteTickUpdateManyWithWhereWithoutWebsiteInput | WebsiteTickUpdateManyWithWhereWithoutWebsiteInput[]
+    deleteMany?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+  }
+
+  export type WebsiteTickCreateNestedManyWithoutValidatorInput = {
+    create?: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput> | WebsiteTickCreateWithoutValidatorInput[] | WebsiteTickUncheckedCreateWithoutValidatorInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutValidatorInput | WebsiteTickCreateOrConnectWithoutValidatorInput[]
+    createMany?: WebsiteTickCreateManyValidatorInputEnvelope
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+  }
+
+  export type WebsiteTickUncheckedCreateNestedManyWithoutValidatorInput = {
+    create?: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput> | WebsiteTickCreateWithoutValidatorInput[] | WebsiteTickUncheckedCreateWithoutValidatorInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutValidatorInput | WebsiteTickCreateOrConnectWithoutValidatorInput[]
+    createMany?: WebsiteTickCreateManyValidatorInputEnvelope
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+  }
+
+  export type WebsiteTickUpdateManyWithoutValidatorNestedInput = {
+    create?: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput> | WebsiteTickCreateWithoutValidatorInput[] | WebsiteTickUncheckedCreateWithoutValidatorInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutValidatorInput | WebsiteTickCreateOrConnectWithoutValidatorInput[]
+    upsert?: WebsiteTickUpsertWithWhereUniqueWithoutValidatorInput | WebsiteTickUpsertWithWhereUniqueWithoutValidatorInput[]
+    createMany?: WebsiteTickCreateManyValidatorInputEnvelope
+    set?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    disconnect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    delete?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    update?: WebsiteTickUpdateWithWhereUniqueWithoutValidatorInput | WebsiteTickUpdateWithWhereUniqueWithoutValidatorInput[]
+    updateMany?: WebsiteTickUpdateManyWithWhereWithoutValidatorInput | WebsiteTickUpdateManyWithWhereWithoutValidatorInput[]
+    deleteMany?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+  }
+
+  export type WebsiteTickUncheckedUpdateManyWithoutValidatorNestedInput = {
+    create?: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput> | WebsiteTickCreateWithoutValidatorInput[] | WebsiteTickUncheckedCreateWithoutValidatorInput[]
+    connectOrCreate?: WebsiteTickCreateOrConnectWithoutValidatorInput | WebsiteTickCreateOrConnectWithoutValidatorInput[]
+    upsert?: WebsiteTickUpsertWithWhereUniqueWithoutValidatorInput | WebsiteTickUpsertWithWhereUniqueWithoutValidatorInput[]
+    createMany?: WebsiteTickCreateManyValidatorInputEnvelope
+    set?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    disconnect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    delete?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+    update?: WebsiteTickUpdateWithWhereUniqueWithoutValidatorInput | WebsiteTickUpdateWithWhereUniqueWithoutValidatorInput[]
+    updateMany?: WebsiteTickUpdateManyWithWhereWithoutValidatorInput | WebsiteTickUpdateManyWithWhereWithoutValidatorInput[]
+    deleteMany?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+  }
+
+  export type WebsiteCreateNestedOneWithoutTicksInput = {
+    create?: XOR<WebsiteCreateWithoutTicksInput, WebsiteUncheckedCreateWithoutTicksInput>
+    connectOrCreate?: WebsiteCreateOrConnectWithoutTicksInput
+    connect?: WebsiteWhereUniqueInput
+  }
+
+  export type validatorCreateNestedOneWithoutTicksInput = {
+    create?: XOR<validatorCreateWithoutTicksInput, validatorUncheckedCreateWithoutTicksInput>
+    connectOrCreate?: validatorCreateOrConnectWithoutTicksInput
+    connect?: validatorWhereUniqueInput
+  }
+
+  export type EnumWebsiteStatusFieldUpdateOperationsInput = {
+    set?: $Enums.WebsiteStatus
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type WebsiteUpdateOneRequiredWithoutTicksNestedInput = {
+    create?: XOR<WebsiteCreateWithoutTicksInput, WebsiteUncheckedCreateWithoutTicksInput>
+    connectOrCreate?: WebsiteCreateOrConnectWithoutTicksInput
+    upsert?: WebsiteUpsertWithoutTicksInput
+    connect?: WebsiteWhereUniqueInput
+    update?: XOR<XOR<WebsiteUpdateToOneWithWhereWithoutTicksInput, WebsiteUpdateWithoutTicksInput>, WebsiteUncheckedUpdateWithoutTicksInput>
+  }
+
+  export type validatorUpdateOneRequiredWithoutTicksNestedInput = {
+    create?: XOR<validatorCreateWithoutTicksInput, validatorUncheckedCreateWithoutTicksInput>
+    connectOrCreate?: validatorCreateOrConnectWithoutTicksInput
+    upsert?: validatorUpsertWithoutTicksInput
+    connect?: validatorWhereUniqueInput
+    update?: XOR<XOR<validatorUpdateToOneWithWhereWithoutTicksInput, validatorUpdateWithoutTicksInput>, validatorUncheckedUpdateWithoutTicksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2339,6 +6516,294 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumWebsiteStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWebsiteStatusFilter<$PrismaModel> | $Enums.WebsiteStatus
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumWebsiteStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWebsiteStatusWithAggregatesFilter<$PrismaModel> | $Enums.WebsiteStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumWebsiteStatusFilter<$PrismaModel>
+    _max?: NestedEnumWebsiteStatusFilter<$PrismaModel>
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type WebsiteTickCreateWithoutWebsiteInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+    validator: validatorCreateNestedOneWithoutTicksInput
+  }
+
+  export type WebsiteTickUncheckedCreateWithoutWebsiteInput = {
+    id?: string
+    validatorId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickCreateOrConnectWithoutWebsiteInput = {
+    where: WebsiteTickWhereUniqueInput
+    create: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput>
+  }
+
+  export type WebsiteTickCreateManyWebsiteInputEnvelope = {
+    data: WebsiteTickCreateManyWebsiteInput | WebsiteTickCreateManyWebsiteInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WebsiteTickUpsertWithWhereUniqueWithoutWebsiteInput = {
+    where: WebsiteTickWhereUniqueInput
+    update: XOR<WebsiteTickUpdateWithoutWebsiteInput, WebsiteTickUncheckedUpdateWithoutWebsiteInput>
+    create: XOR<WebsiteTickCreateWithoutWebsiteInput, WebsiteTickUncheckedCreateWithoutWebsiteInput>
+  }
+
+  export type WebsiteTickUpdateWithWhereUniqueWithoutWebsiteInput = {
+    where: WebsiteTickWhereUniqueInput
+    data: XOR<WebsiteTickUpdateWithoutWebsiteInput, WebsiteTickUncheckedUpdateWithoutWebsiteInput>
+  }
+
+  export type WebsiteTickUpdateManyWithWhereWithoutWebsiteInput = {
+    where: WebsiteTickScalarWhereInput
+    data: XOR<WebsiteTickUpdateManyMutationInput, WebsiteTickUncheckedUpdateManyWithoutWebsiteInput>
+  }
+
+  export type WebsiteTickScalarWhereInput = {
+    AND?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+    OR?: WebsiteTickScalarWhereInput[]
+    NOT?: WebsiteTickScalarWhereInput | WebsiteTickScalarWhereInput[]
+    id?: StringFilter<"WebsiteTick"> | string
+    websiteId?: StringFilter<"WebsiteTick"> | string
+    validatorId?: StringFilter<"WebsiteTick"> | string
+    createdAt?: DateTimeFilter<"WebsiteTick"> | Date | string
+    status?: EnumWebsiteStatusFilter<"WebsiteTick"> | $Enums.WebsiteStatus
+    latency?: FloatFilter<"WebsiteTick"> | number
+  }
+
+  export type WebsiteTickCreateWithoutValidatorInput = {
+    id?: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+    website: WebsiteCreateNestedOneWithoutTicksInput
+  }
+
+  export type WebsiteTickUncheckedCreateWithoutValidatorInput = {
+    id?: string
+    websiteId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickCreateOrConnectWithoutValidatorInput = {
+    where: WebsiteTickWhereUniqueInput
+    create: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput>
+  }
+
+  export type WebsiteTickCreateManyValidatorInputEnvelope = {
+    data: WebsiteTickCreateManyValidatorInput | WebsiteTickCreateManyValidatorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type WebsiteTickUpsertWithWhereUniqueWithoutValidatorInput = {
+    where: WebsiteTickWhereUniqueInput
+    update: XOR<WebsiteTickUpdateWithoutValidatorInput, WebsiteTickUncheckedUpdateWithoutValidatorInput>
+    create: XOR<WebsiteTickCreateWithoutValidatorInput, WebsiteTickUncheckedCreateWithoutValidatorInput>
+  }
+
+  export type WebsiteTickUpdateWithWhereUniqueWithoutValidatorInput = {
+    where: WebsiteTickWhereUniqueInput
+    data: XOR<WebsiteTickUpdateWithoutValidatorInput, WebsiteTickUncheckedUpdateWithoutValidatorInput>
+  }
+
+  export type WebsiteTickUpdateManyWithWhereWithoutValidatorInput = {
+    where: WebsiteTickScalarWhereInput
+    data: XOR<WebsiteTickUpdateManyMutationInput, WebsiteTickUncheckedUpdateManyWithoutValidatorInput>
+  }
+
+  export type WebsiteCreateWithoutTicksInput = {
+    id?: string
+    url: string
+    userId: string
+  }
+
+  export type WebsiteUncheckedCreateWithoutTicksInput = {
+    id?: string
+    url: string
+    userId: string
+  }
+
+  export type WebsiteCreateOrConnectWithoutTicksInput = {
+    where: WebsiteWhereUniqueInput
+    create: XOR<WebsiteCreateWithoutTicksInput, WebsiteUncheckedCreateWithoutTicksInput>
+  }
+
+  export type validatorCreateWithoutTicksInput = {
+    id?: string
+    publicKey: string
+    location: string
+    ipAddress: string
+  }
+
+  export type validatorUncheckedCreateWithoutTicksInput = {
+    id?: string
+    publicKey: string
+    location: string
+    ipAddress: string
+  }
+
+  export type validatorCreateOrConnectWithoutTicksInput = {
+    where: validatorWhereUniqueInput
+    create: XOR<validatorCreateWithoutTicksInput, validatorUncheckedCreateWithoutTicksInput>
+  }
+
+  export type WebsiteUpsertWithoutTicksInput = {
+    update: XOR<WebsiteUpdateWithoutTicksInput, WebsiteUncheckedUpdateWithoutTicksInput>
+    create: XOR<WebsiteCreateWithoutTicksInput, WebsiteUncheckedCreateWithoutTicksInput>
+    where?: WebsiteWhereInput
+  }
+
+  export type WebsiteUpdateToOneWithWhereWithoutTicksInput = {
+    where?: WebsiteWhereInput
+    data: XOR<WebsiteUpdateWithoutTicksInput, WebsiteUncheckedUpdateWithoutTicksInput>
+  }
+
+  export type WebsiteUpdateWithoutTicksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WebsiteUncheckedUpdateWithoutTicksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type validatorUpsertWithoutTicksInput = {
+    update: XOR<validatorUpdateWithoutTicksInput, validatorUncheckedUpdateWithoutTicksInput>
+    create: XOR<validatorCreateWithoutTicksInput, validatorUncheckedCreateWithoutTicksInput>
+    where?: validatorWhereInput
+  }
+
+  export type validatorUpdateToOneWithWhereWithoutTicksInput = {
+    where?: validatorWhereInput
+    data: XOR<validatorUpdateWithoutTicksInput, validatorUncheckedUpdateWithoutTicksInput>
+  }
+
+  export type validatorUpdateWithoutTicksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type validatorUncheckedUpdateWithoutTicksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    publicKey?: StringFieldUpdateOperationsInput | string
+    location?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WebsiteTickCreateManyWebsiteInput = {
+    id?: string
+    validatorId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickUpdateWithoutWebsiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+    validator?: validatorUpdateOneRequiredWithoutTicksNestedInput
+  }
+
+  export type WebsiteTickUncheckedUpdateWithoutWebsiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    validatorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type WebsiteTickUncheckedUpdateManyWithoutWebsiteInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    validatorId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type WebsiteTickCreateManyValidatorInput = {
+    id?: string
+    websiteId: string
+    createdAt?: Date | string
+    status: $Enums.WebsiteStatus
+    latency: number
+  }
+
+  export type WebsiteTickUpdateWithoutValidatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+    website?: WebsiteUpdateOneRequiredWithoutTicksNestedInput
+  }
+
+  export type WebsiteTickUncheckedUpdateWithoutValidatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    websiteId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type WebsiteTickUncheckedUpdateManyWithoutValidatorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    websiteId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: EnumWebsiteStatusFieldUpdateOperationsInput | $Enums.WebsiteStatus
+    latency?: FloatFieldUpdateOperationsInput | number
   }
 
 

@@ -124,9 +124,30 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
-  password: 'password',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WebsiteScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  userId: 'userId'
+};
+
+exports.Prisma.ValidatorScalarFieldEnum = {
+  id: 'id',
+  publicKey: 'publicKey',
+  location: 'location',
+  ipAddress: 'ipAddress'
+};
+
+exports.Prisma.WebsiteTickScalarFieldEnum = {
+  id: 'id',
+  websiteId: 'websiteId',
+  validatorId: 'validatorId',
+  createdAt: 'createdAt',
+  status: 'status',
+  latency: 'latency'
 };
 
 exports.Prisma.SortOrder = {
@@ -143,10 +164,16 @@ exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
 };
-
+exports.WebsiteStatus = exports.$Enums.WebsiteStatus = {
+  GOOD: 'GOOD',
+  BAD: 'BAD'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Website: 'Website',
+  validator: 'validator',
+  WebsiteTick: 'WebsiteTick'
 };
 
 /**
