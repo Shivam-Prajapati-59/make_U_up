@@ -27,6 +27,7 @@ router.get("/status", async (req, res) => {
     where: {
       id: websiteId,
       userId: userId,
+      disabled: false,
     },
     include: {
       ticks: true,
