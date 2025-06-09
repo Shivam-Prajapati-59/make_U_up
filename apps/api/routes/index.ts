@@ -14,6 +14,9 @@ router.get("/v1/websites", async (req, res) => {
       userId: userId,
       disabled: false,
     },
+    include: {
+      ticks: true,
+    },
   });
   res.json({
     websites: websites,
