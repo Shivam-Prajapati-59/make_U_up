@@ -18,5 +18,8 @@
   },
   "scripts": {
     "migrate": "prisma migrate dev --schema=prisma/schema.prisma"
+  },
+  "prisma": {
+    "seed": "./prisma/seed.ts"
   }
 }

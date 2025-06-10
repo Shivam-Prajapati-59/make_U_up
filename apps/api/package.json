@@ -10,8 +10,14 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@types/cors": "^2.8.19",
     "@types/express": "^5.0.1",
+    "@types/jsonwebtoken": "^9.0.9",
+    "cor": "^0.0.0",
+    "cors": "^2.8.5",
+    "db": "*",
     "express": "^5.1.0",
-    "db": "*"
+    "jsonwebtoken": "^9.0.2",
+    "jwt": "^0.2.0"
   }
 }

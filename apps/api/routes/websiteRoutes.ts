@@ -1,10 +1,10 @@
 import express from "express";
 import { prismaClient } from "db/client";
-import { idText } from "typescript";
+import { authMiddleware } from "../middleware";
 
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", authMiddleware, async (req, res) => {
   const userId = req.userId!;
   const { url } = req.body;
 

@@ -6,12 +6,12 @@ import axios from "axios";
 import { API_BACKEND_URL } from "@/config";
 import { useAuth } from "@clerk/nextjs";
 
-type UptimeStatus = "good" | "bad" | "unknown";
+type UptimeStatus = "GOOD" | "BAD" | "unknown";
 
 function StatusCircle({ status }: { status: UptimeStatus }) {
   return (
     <div
-      className={`w-3 h-3 rounded-full ${status === "good" ? "bg-green-500" : status === "bad" ? "bg-red-500" : "bg-gray-500"}`}
+      className={`w-3 h-3 rounded-full ${status === "GOOD" ? "bg-green-500" : status === "BAD" ? "bg-red-500" : "bg-gray-500"}`}
     />
   );
 }
@@ -23,9 +23,9 @@ function UptimeTicks({ ticks }: { ticks: UptimeStatus[] }) {
         <div
           key={index}
           className={`w-8 h-2 rounded ${
-            tick === "good"
+            tick === "GOOD"
               ? "bg-green-500"
-              : tick === "bad"
+              : tick === "BAD"
                 ? "bg-red-500"
                 : "bg-gray-500"
           }`}
@@ -140,7 +140,6 @@ function WebsiteCard({ website }: { website: ProcessedWebsite }) {
 }
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { websites, refreshWebsites } = useWebsites();
   const { getToken } = useAuth();
@@ -173,20 +172,20 @@ function App() {
 
         // Window is considered up if majority of ticks are up
         const upTicks = windowTicks.filter(
-          (tick) => tick.status === "Good"
+          (tick) => tick.status === "GOOD"
         ).length;
         windows[9 - i] =
           windowTicks.length === 0
             ? "unknown"
             : upTicks / windowTicks.length >= 0.5
-              ? "good"
-              : "bad";
+              ? "GOOD"
+              : "BAD";
       }
 
       // Calculate overall status and uptime percentage
       const totalTicks = sortedTicks.length;
       const upTicks = sortedTicks.filter(
-        (tick) => tick.status === "Good"
+        (tick) => tick.status === "GOOD"
       ).length;
       const uptimePercentage =
         totalTicks === 0 ? 100 : (upTicks / totalTicks) * 100;
@@ -221,16 +220,6 @@ function App() {
             </h1>
           </div>
           <div className="flex items-center space-x-4">
-            <button
-              onClick={() => setIsDarkMode(!isDarkMode)}
-              className="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700"
-            >
-              {isDarkMode ? (
-                <Sun className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-600 dark:text-gray-300" />
-              )}
-            </button>
             <button
               onClick={() => setIsModalOpen(true)}
               className="flex items-center space-x-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors duration-200"
