@@ -3278,8 +3278,18 @@ export namespace Prisma {
 
   export type AggregateValidator = {
     _count: ValidatorCountAggregateOutputType | null
+    _avg: ValidatorAvgAggregateOutputType | null
+    _sum: ValidatorSumAggregateOutputType | null
     _min: ValidatorMinAggregateOutputType | null
     _max: ValidatorMaxAggregateOutputType | null
+  }
+
+  export type ValidatorAvgAggregateOutputType = {
+    pendingPayouuts: number | null
+  }
+
+  export type ValidatorSumAggregateOutputType = {
+    pendingPayouuts: number | null
   }
 
   export type ValidatorMinAggregateOutputType = {
@@ -3287,6 +3297,7 @@ export namespace Prisma {
     publicKey: string | null
     location: string | null
     ipAddress: string | null
+    pendingPayouuts: number | null
   }
 
   export type ValidatorMaxAggregateOutputType = {
@@ -3294,6 +3305,7 @@ export namespace Prisma {
     publicKey: string | null
     location: string | null
     ipAddress: string | null
+    pendingPayouuts: number | null
   }
 
   export type ValidatorCountAggregateOutputType = {
@@ -3301,15 +3313,25 @@ export namespace Prisma {
     publicKey: number
     location: number
     ipAddress: number
+    pendingPayouuts: number
     _all: number
   }
 
+
+  export type ValidatorAvgAggregateInputType = {
+    pendingPayouuts?: true
+  }
+
+  export type ValidatorSumAggregateInputType = {
+    pendingPayouuts?: true
+  }
 
   export type ValidatorMinAggregateInputType = {
     id?: true
     publicKey?: true
     location?: true
     ipAddress?: true
+    pendingPayouuts?: true
   }
 
   export type ValidatorMaxAggregateInputType = {
@@ -3317,6 +3339,7 @@ export namespace Prisma {
     publicKey?: true
     location?: true
     ipAddress?: true
+    pendingPayouuts?: true
   }
 
   export type ValidatorCountAggregateInputType = {
@@ -3324,6 +3347,7 @@ export namespace Prisma {
     publicKey?: true
     location?: true
     ipAddress?: true
+    pendingPayouuts?: true
     _all?: true
   }
 
@@ -3365,6 +3389,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ValidatorAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ValidatorSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ValidatorMinAggregateInputType
@@ -3395,6 +3431,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ValidatorCountAggregateInputType | true
+    _avg?: ValidatorAvgAggregateInputType
+    _sum?: ValidatorSumAggregateInputType
     _min?: ValidatorMinAggregateInputType
     _max?: ValidatorMaxAggregateInputType
   }
@@ -3404,7 +3442,10 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts: number
     _count: ValidatorCountAggregateOutputType | null
+    _avg: ValidatorAvgAggregateOutputType | null
+    _sum: ValidatorSumAggregateOutputType | null
     _min: ValidatorMinAggregateOutputType | null
     _max: ValidatorMaxAggregateOutputType | null
   }
@@ -3428,6 +3469,7 @@ export namespace Prisma {
     publicKey?: boolean
     location?: boolean
     ipAddress?: boolean
+    pendingPayouuts?: boolean
     ticks?: boolean | validator$ticksArgs<ExtArgs>
     _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["validator"]>
@@ -3437,6 +3479,7 @@ export namespace Prisma {
     publicKey?: boolean
     location?: boolean
     ipAddress?: boolean
+    pendingPayouuts?: boolean
   }, ExtArgs["result"]["validator"]>
 
   export type validatorSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3444,6 +3487,7 @@ export namespace Prisma {
     publicKey?: boolean
     location?: boolean
     ipAddress?: boolean
+    pendingPayouuts?: boolean
   }, ExtArgs["result"]["validator"]>
 
   export type validatorSelectScalar = {
@@ -3451,9 +3495,10 @@ export namespace Prisma {
     publicKey?: boolean
     location?: boolean
     ipAddress?: boolean
+    pendingPayouuts?: boolean
   }
 
-  export type validatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "location" | "ipAddress", ExtArgs["result"]["validator"]>
+  export type validatorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "publicKey" | "location" | "ipAddress" | "pendingPayouuts", ExtArgs["result"]["validator"]>
   export type validatorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ticks?: boolean | validator$ticksArgs<ExtArgs>
     _count?: boolean | ValidatorCountOutputTypeDefaultArgs<ExtArgs>
@@ -3471,6 +3516,7 @@ export namespace Prisma {
       publicKey: string
       location: string
       ipAddress: string
+      pendingPayouuts: number
     }, ExtArgs["result"]["validator"]>
     composites: {}
   }
@@ -3899,6 +3945,7 @@ export namespace Prisma {
     readonly publicKey: FieldRef<"validator", 'String'>
     readonly location: FieldRef<"validator", 'String'>
     readonly ipAddress: FieldRef<"validator", 'String'>
+    readonly pendingPayouuts: FieldRef<"validator", 'Int'>
   }
     
 
@@ -5481,7 +5528,8 @@ export namespace Prisma {
     id: 'id',
     publicKey: 'publicKey',
     location: 'location',
-    ipAddress: 'ipAddress'
+    ipAddress: 'ipAddress',
+    pendingPayouuts: 'pendingPayouuts'
   };
 
   export type ValidatorScalarFieldEnum = (typeof ValidatorScalarFieldEnum)[keyof typeof ValidatorScalarFieldEnum]
@@ -5564,6 +5612,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'WebsiteStatus'
    */
   export type EnumWebsiteStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'WebsiteStatus'>
@@ -5588,20 +5650,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float[]'
    */
   export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
   /**
    * Deep Input Types
@@ -5718,6 +5766,7 @@ export namespace Prisma {
     publicKey?: StringFilter<"validator"> | string
     location?: StringFilter<"validator"> | string
     ipAddress?: StringFilter<"validator"> | string
+    pendingPayouuts?: IntFilter<"validator"> | number
     ticks?: WebsiteTickListRelationFilter
   }
 
@@ -5726,6 +5775,7 @@ export namespace Prisma {
     publicKey?: SortOrder
     location?: SortOrder
     ipAddress?: SortOrder
+    pendingPayouuts?: SortOrder
     ticks?: WebsiteTickOrderByRelationAggregateInput
   }
 
@@ -5737,6 +5787,7 @@ export namespace Prisma {
     publicKey?: StringFilter<"validator"> | string
     location?: StringFilter<"validator"> | string
     ipAddress?: StringFilter<"validator"> | string
+    pendingPayouuts?: IntFilter<"validator"> | number
     ticks?: WebsiteTickListRelationFilter
   }, "id">
 
@@ -5745,9 +5796,12 @@ export namespace Prisma {
     publicKey?: SortOrder
     location?: SortOrder
     ipAddress?: SortOrder
+    pendingPayouuts?: SortOrder
     _count?: validatorCountOrderByAggregateInput
+    _avg?: validatorAvgOrderByAggregateInput
     _max?: validatorMaxOrderByAggregateInput
     _min?: validatorMinOrderByAggregateInput
+    _sum?: validatorSumOrderByAggregateInput
   }
 
   export type validatorScalarWhereWithAggregatesInput = {
@@ -5758,6 +5812,7 @@ export namespace Prisma {
     publicKey?: StringWithAggregatesFilter<"validator"> | string
     location?: StringWithAggregatesFilter<"validator"> | string
     ipAddress?: StringWithAggregatesFilter<"validator"> | string
+    pendingPayouuts?: IntWithAggregatesFilter<"validator"> | number
   }
 
   export type WebsiteTickWhereInput = {
@@ -5939,6 +5994,7 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts?: number
     ticks?: WebsiteTickCreateNestedManyWithoutValidatorInput
   }
 
@@ -5947,6 +6003,7 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts?: number
     ticks?: WebsiteTickUncheckedCreateNestedManyWithoutValidatorInput
   }
 
@@ -5955,6 +6012,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
     ticks?: WebsiteTickUpdateManyWithoutValidatorNestedInput
   }
 
@@ -5963,6 +6021,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
     ticks?: WebsiteTickUncheckedUpdateManyWithoutValidatorNestedInput
   }
 
@@ -5971,6 +6030,7 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts?: number
   }
 
   export type validatorUpdateManyMutationInput = {
@@ -5978,6 +6038,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
   }
 
   export type validatorUncheckedUpdateManyInput = {
@@ -5985,6 +6046,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
   }
 
   export type WebsiteTickCreateInput = {
@@ -6212,11 +6274,27 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type validatorCountOrderByAggregateInput = {
     id?: SortOrder
     publicKey?: SortOrder
     location?: SortOrder
     ipAddress?: SortOrder
+    pendingPayouuts?: SortOrder
+  }
+
+  export type validatorAvgOrderByAggregateInput = {
+    pendingPayouuts?: SortOrder
   }
 
   export type validatorMaxOrderByAggregateInput = {
@@ -6224,6 +6302,7 @@ export namespace Prisma {
     publicKey?: SortOrder
     location?: SortOrder
     ipAddress?: SortOrder
+    pendingPayouuts?: SortOrder
   }
 
   export type validatorMinOrderByAggregateInput = {
@@ -6231,6 +6310,27 @@ export namespace Prisma {
     publicKey?: SortOrder
     location?: SortOrder
     ipAddress?: SortOrder
+    pendingPayouuts?: SortOrder
+  }
+
+  export type validatorSumOrderByAggregateInput = {
+    pendingPayouuts?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type EnumWebsiteStatusFilter<$PrismaModel = never> = {
@@ -6392,6 +6492,14 @@ export namespace Prisma {
     connectOrCreate?: WebsiteTickCreateOrConnectWithoutValidatorInput | WebsiteTickCreateOrConnectWithoutValidatorInput[]
     createMany?: WebsiteTickCreateManyValidatorInputEnvelope
     connect?: WebsiteTickWhereUniqueInput | WebsiteTickWhereUniqueInput[]
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type WebsiteTickUpdateManyWithoutValidatorNestedInput = {
@@ -6584,11 +6692,20 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
-  export type NestedEnumWebsiteStatusFilter<$PrismaModel = never> = {
-    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
-    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
-    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
-    not?: NestedEnumWebsiteStatusFilter<$PrismaModel> | $Enums.WebsiteStatus
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatFilter<$PrismaModel = never> = {
@@ -6600,6 +6717,13 @@ export namespace Prisma {
     gt?: number | FloatFieldRefInput<$PrismaModel>
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedEnumWebsiteStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.WebsiteStatus | EnumWebsiteStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.WebsiteStatus[] | ListEnumWebsiteStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumWebsiteStatusFilter<$PrismaModel> | $Enums.WebsiteStatus
   }
 
   export type NestedEnumWebsiteStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -6748,6 +6872,7 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts?: number
   }
 
   export type validatorUncheckedCreateWithoutTicksInput = {
@@ -6755,6 +6880,7 @@ export namespace Prisma {
     publicKey: string
     location: string
     ipAddress: string
+    pendingPayouuts?: number
   }
 
   export type validatorCreateOrConnectWithoutTicksInput = {
@@ -6803,6 +6929,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
   }
 
   export type validatorUncheckedUpdateWithoutTicksInput = {
@@ -6810,6 +6937,7 @@ export namespace Prisma {
     publicKey?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     ipAddress?: StringFieldUpdateOperationsInput | string
+    pendingPayouuts?: IntFieldUpdateOperationsInput | number
   }
 
   export type WebsiteTickCreateManyWebsiteInput = {

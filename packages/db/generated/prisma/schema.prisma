@@ -31,11 +31,12 @@ model Website {
 }
 
 model validator {
-  id        String        @id @default(uuid())
-  publicKey String
-  location  String
-  ipAddress String
-  ticks     WebsiteTick[]
+  id              String        @id @default(uuid())
+  publicKey       String
+  location        String
+  ipAddress       String
+  pendingPayouuts Int           @default(0)
+  ticks           WebsiteTick[]
 }
 
 model WebsiteTick {
