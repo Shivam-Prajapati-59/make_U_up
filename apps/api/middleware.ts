@@ -1,5 +1,4 @@
 import type { NextFunction, Request, Response } from "express";
-
 import jwt from "jsonwebtoken";
 import { JWT_PUBLIC_KEY } from "./config";
 
@@ -7,26 +6,32 @@ export function authMiddleware(
   req: Request,
   res: Response,
   next: NextFunction
-) {
-  const token = req.headers["authorization"];
+): void {
+  const authHeader = req.headers["authorization"];
+  if (!authHeader) {
+    res.status(401).json({ error: "Unauthorized" });
+    return;
+  }
 
+  const token = authHeader.split(" ")[1];
   if (!token) {
-    return res.status(401).json({
-      error: "Unauthorized",
-    });
+    res.status(401).json({ error: "Unauthorized" });
+    return;
   }
 
-  const decoded = jwt.verify(token, JWT_PUBLIC_KEY);
+  try {
+    const decoded = jwt.verify(token, JWT_PUBLIC_KEY) as jwt.JwtPayload;
+    console.log(decoded);
 
-  console.log(decoded);
+    if (!decoded || !decoded.sub) {
+      res.status(401).json({ error: "Unauthorized" });
+      return;
+    }
 
-  if (!decoded || decoded.sub) {
-    return res.status(401).json({
-      error: "Unauthorized",
-    });
+    req.userId = decoded.sub as string;
+
+    next(); // Continue to next middleware/handler
+  } catch (err) {
+    res.status(401).json({ error: "Invalid token" });
   }
-
-  req.userId = decoded.sub as string;
-
-  next();
 }

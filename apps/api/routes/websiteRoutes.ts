@@ -19,7 +19,7 @@ router.post("/", authMiddleware, async (req, res) => {
   });
 });
 
-router.get("/status", async (req, res) => {
+router.get("/status", authMiddleware, async (req, res) => {
   const websiteId = req.query.websiteId as unknown as string;
   const userId = req.userId!;
 
@@ -39,7 +39,7 @@ router.get("/status", async (req, res) => {
   });
 });
 
-router.delete("/", async (req, res) => {
+router.delete("/", authMiddleware, async (req, res) => {
   const websiteId = req.query.websiteId as unknown as string;
   const userId = req.userId!;
 

@@ -8,14 +8,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.CORS_ORIGIN || "http://localhost:3000",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true, // Allow credentials if needed
-  })
-);
+app.use(cors());
 // Routes
 app.use("/api", routes);
 app.listen(PORT, () => {
